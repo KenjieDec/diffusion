@@ -211,9 +211,8 @@ class FlaxStableDiffusionPipeline(FlaxDiffusionPipeline):
         #        image, has_nsfw_concept = self.safety_checker(
         #            images=image, clip_input=safety_checker_input.pixel_values, params=params["safety_params"]
         #        )
-        has_nsfw_concept = False
 
         if not return_dict:
-            return (image, has_nsfw_concept)
+            return (image)
 
-        return FlaxStableDiffusionPipelineOutput(images=image, nsfw_content_detected=has_nsfw_concept)
+        return FlaxStableDiffusionPipelineOutput(images=image)

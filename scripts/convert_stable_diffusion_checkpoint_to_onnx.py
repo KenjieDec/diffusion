@@ -166,7 +166,7 @@ def convert_models(model_path: str, output_path: str, opset: int):
         model_args=(torch.randn(1, 3, 224, 224), torch.randn(1, 512, 512, 3)),
         output_path=output_path / "safety_checker" / "model.onnx",
         ordered_input_names=["clip_input", "images"],
-        output_names=["out_images", "has_nsfw_concepts"],
+        output_names=["out_images"],
         dynamic_axes={
             "clip_input": {0: "batch", 1: "channels", 2: "height", 3: "width"},
             "images": {0: "batch", 1: "channels", 2: "height", 3: "width"},

@@ -18,13 +18,11 @@ class StableDiffusionPipelineOutput(BaseOutput):
         images (`List[PIL.Image.Image]` or `np.ndarray`)
             List of denoised PIL images of length `batch_size` or numpy array of shape `(batch_size, height, width,
             num_channels)`. PIL images or numpy array present the denoised images of the diffusion pipeline.
-        nsfw_content_detected (`List[bool]`)
             List of flags denoting whether the corresponding generated image likely represents "not-safe-for-work"
             (nsfw) content.
     """
 
     images: Union[List[PIL.Image.Image], np.ndarray]
-    nsfw_content_detected: List[bool]
 
 
 if is_transformers_available():
@@ -48,13 +46,11 @@ if is_transformers_available() and is_flax_available():
             images (`List[PIL.Image.Image]` or `np.ndarray`)
                 List of denoised PIL images of length `batch_size` or numpy array of shape `(batch_size, height, width,
                 num_channels)`. PIL images or numpy array present the denoised images of the diffusion pipeline.
-            nsfw_content_detected (`List[bool]`)
                 List of flags denoting whether the corresponding generated image likely represents "not-safe-for-work"
                 (nsfw) content.
         """
 
         images: Union[List[PIL.Image.Image], np.ndarray]
-        nsfw_content_detected: List[bool]
 
     from ...schedulers.scheduling_pndm_flax import PNDMSchedulerState
     from .pipeline_flax_stable_diffusion import FlaxStableDiffusionPipeline

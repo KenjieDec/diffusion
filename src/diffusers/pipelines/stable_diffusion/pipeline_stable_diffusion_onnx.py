@@ -175,14 +175,10 @@ class StableDiffusionOnnxPipeline(DiffusionPipeline):
         image = np.clip(image / 2 + 0.5, 0, 1)
         image = image.transpose((0, 2, 3, 1))
 
-        # run safety checker
-        safety_checker_input = self.feature_extractor(self.numpy_to_pil(image), return_tensors="np")
-        image, has_nsfw_concept = self.safety_checker(clip_input=safety_checker_input.pixel_values, images=image)
-
         if output_type == "pil":
             image = self.numpy_to_pil(image)
 
         if not return_dict:
-            return (image, has_nsfw_concept)
+            return (image)
 
-        return StableDiffusionPipelineOutput(images=image, nsfw_content_detected=has_nsfw_concept)
+        return StableDiffusionPipelineOutput(images=image)

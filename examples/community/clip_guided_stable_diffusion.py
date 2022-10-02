@@ -317,4 +317,4 @@ class CLIPGuidedStableDiffusion(DiffusionPipeline):
         if not return_dict:
             return (image, None)
 
-        return StableDiffusionPipelineOutput(images=image, nsfw_content_detected=None)
+        return StableDiffusionPipelineOutput(images=image)
